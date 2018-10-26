@@ -768,7 +768,7 @@
                                     <!-- Single Input Area Start -->
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <input type="email" class="form-control" name="email" id="email"
+                                            <input type="phone" class="form-control" name="phone" id="phone"
                                                 placeholder="电话*" required>
                                         </div>
                                     </div>
@@ -833,24 +833,26 @@
 
         function signup() {
             var username = $('#name').val();
-            var password = $('#email').val();
+            var phone = $('#phone').val();
             var email = $('message').val();
 
             // LeanCloud - 注册
             // https://leancloud.cn/docs/leanstorage_guide-js.html#注册
             var user = new AV.User();
             user.setUsername(username);
-            user.setPassword(password);
-            user.setEmail(email);
-            user.signUp().then(function (loginedUser) {
+            user.set('phone', phone);
+            user.set('content',message);
+            user.save().then(function () {
+                console.log('New object created with 昵称: ' + user.username);
                 alert('留言成功!');
             }, (function (error) {
-                alert(JSON.stringify(error));
+                // alert(JSON.stringify(error));
+                console.error('Failed to create new object, with error message: ' + error.message);
             }));
         };
 
         $(function () {
-            $(".form-signup").on('submit', function (e) {
+            $(".contact_from").on('submit', function (e) {
                 e.preventDefault();
                 signup();
             });
