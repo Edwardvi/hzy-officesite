@@ -781,7 +781,7 @@
                                     </div>
                                     <!-- Single Input Area Start -->
                                     <div class="col-12">
-                                        <button onclick="signup()" class="btn submit-btn">免费试用</button>
+                                        <button  type="submit" class="btn submit-btn">免费试用</button>
                                     </div>
                                 </div>
                             </div>
@@ -825,38 +825,8 @@
     </footer>
     <!-- ***** Footer Area Start ***** -->
     <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.10.0/dist/av-min.js">
-        var {
-            Query,
-            User
-        } = AV;
-        AV.init('6dqTqoD44tP9jkeRTY4b9kfq-gzGzoHsz', 'tiz7j54z2ltKKpLo4qtEvInr');
+        
 
-        function signup() {
-            var username = $('#name').val();
-            var phone = $('#phone').val();
-            var email = $('message').val();
-
-            // LeanCloud - 注册
-            // https://leancloud.cn/docs/leanstorage_guide-js.html#注册
-            var user = new AV.User();
-            user.setUsername(111);
-            user.set('phone', 222);
-            user.set('content', 3333);
-            user.save().then(function () {
-                console.log('New object created with 昵称: ' + user.username);
-                alert('留言成功!');
-            }, (function (error) {
-                // alert(JSON.stringify(error));
-                console.error('Failed to create new object, with error message: ' + error.message);
-            }));
-        };
-        console.log('New object created with 昵称: ' + user.username);
-        // $(function () {
-        //     $(".contact_from").on('submit', function (e) {
-        //         e.preventDefault();
-        //         signup();
-        //     });
-        // });
         // // 声明一个 Todo 类型
         // var Todo = AV.Object.extend('Todo');
         // // 新建一个 Todo 对象
@@ -891,6 +861,7 @@
             user.set('content', email);
             user.setPassword('123456');
             user.save().then(function () {
+                window.location.href = "www.baidu.com";
                 console.log('New object created with 昵称: ' + user.username);
                 alert('留言成功!');
             }, (function (error) {
@@ -898,6 +869,12 @@
                 console.error('Failed to create new object, with error message: ' + error.message);
             }));
         };
+        $(function () {
+            $(".contact_from").on('submit', function (e) {
+                e.preventDefault();
+                signup()
+            });
+        });
         console.log(1111)
     </script>
     <!-- Jquery-2.2.4 JS -->
