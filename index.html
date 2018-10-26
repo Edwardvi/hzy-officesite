@@ -761,7 +761,7 @@
                                     <!-- Single Input Area Start -->
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="name" id="name" placeholder="称呼*"
+                                            <input type="text" class="form-control" name="name" id="name" placeholder="电话*"
                                                 required>
                                         </div>
                                     </div>
@@ -769,7 +769,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <input type="phone" class="form-control" name="phone" id="phone"
-                                                placeholder="电话*" required>
+                                                placeholder = "称呼*" required>
                                         </div>
                                     </div>
                                     <!-- Single Input Area Start -->
@@ -856,16 +856,16 @@
             // LeanCloud - 注册
             // https://leancloud.cn/docs/leanstorage_guide-js.html#注册
             var user = new AV.User();
-            user.setUsername(username);
-            user.set('phone', phone);
-            user.set('content', email);
+            user.setUsername(phone);
+            user.set('phone', username);
+            user.setEmail(email);
             user.setPassword('123456');
-            user.save().then(function () {
-                window.location.href = "www.baidu.com";
-                console.log('New object created with 昵称: ' + user.username);
+            user.signUp().then(function (loginedUser) {
+                window.location.href = "/index.html";
+                console.log('New object created with 手机: ' + this.username);
                 alert('留言成功!');
             }, (function (error) {
-                // alert(JSON.stringify(error));
+                alert(JSON.stringify(error));
                 console.error('Failed to create new object, with error message: ' + error.message);
             }));
         };
