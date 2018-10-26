@@ -841,42 +841,7 @@
         //     console.error('Failed to create new object, with error message: ' + error.message);
         // });
     </script>
-    <script>
-        var {
-            Query,
-            User
-        } = AV;
-        AV.init('6dqTqoD44tP9jkeRTY4b9kfq-gzGzoHsz', 'tiz7j54z2ltKKpLo4qtEvInr');
 
-        function signup() {
-            var username = $('#name').val();
-            var phone = $('#phone').val();
-            var email = $('message').val();
-
-            // LeanCloud - 注册
-            // https://leancloud.cn/docs/leanstorage_guide-js.html#注册
-            var user = new AV.User();
-            user.setUsername(phone);
-            user.set('phone', username);
-            user.setEmail(email);
-            user.setPassword('123456');
-            user.signUp().then(function (loginedUser) {
-                window.location.href = "/index.html";
-                console.log('New object created with 手机: ' + this.username);
-                alert('留言成功!');
-            }, (function (error) {
-                alert(JSON.stringify(error));
-                console.error('Failed to create new object, with error message: ' + error.message);
-            }));
-        };
-        $(function () {
-            $(".contact_from").on('submit', function (e) {
-                e.preventDefault();
-                signup()
-            });
-        });
-        console.log(1111)
-    </script>
     <!-- Jquery-2.2.4 JS -->
     <script src="js/jquery-2.2.4.min.js">
     </script>
@@ -892,6 +857,42 @@
     <script src="js/footer-reveal.min.js"></script>
     <!-- Active JS -->
     <script src="js/active.js"></script>
+    <script>
+            var {
+                Query,
+                User
+            } = AV;
+            AV.init('6dqTqoD44tP9jkeRTY4b9kfq-gzGzoHsz', 'tiz7j54z2ltKKpLo4qtEvInr');
+    
+            function signup() {
+                var username = $('#name').val();
+                var phone = $('#phone').val();
+                var email = $('message').val();
+    
+                // LeanCloud - 注册
+                // https://leancloud.cn/docs/leanstorage_guide-js.html#注册
+                var user = new AV.User();
+                user.setUsername(phone);
+                user.set('phone', username);
+                user.setEmail(email);
+                user.setPassword('123456');
+                user.signUp().then(function (loginedUser) {
+                    window.location.href = "/index.html";
+                    console.log('New object created with 手机: ' + this.username);
+                    alert('留言成功!');
+                }, (function (error) {
+                    alert(JSON.stringify(error));
+                    console.error('Failed to create new object, with error message: ' + error.message);
+                }));
+            };
+            $(function () {
+                $(".contact_from").on('submit', function (e) {
+                    e.preventDefault();
+                    signup()
+                });
+            });
+            console.log(1111)
+        </script>
 </body>
 
 </html>
